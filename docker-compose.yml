@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/images:/usr/local/apache2/htdocs/images
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./frontend/images:/app/images
+
